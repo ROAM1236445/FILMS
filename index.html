@@ -557,23 +557,21 @@ let allFilms = [];
 let filtered = [];
 let activeId = null;
 
-// ── STATIC HOSTING: loads films.json instead of /api/films ──
-async function loadFilms() {
-  try {
-    const res = await fetch('/api/films');
-    if (!res.ok) throw new Error('API error');
-    allFilms = await res.json();
-    filtered = [...allFilms];
-    updateStats();
-    renderAll();
-    document.getElementById('loading').style.display = 'none';
-  } catch (e) {
-    document.getElementById('loading').innerHTML = `
-      <div class="icon">⚠️</div>
-      <h2>films.json missing</h2>
-      <p>Run <strong>generate_films_json.py</strong> in your films folder and upload the resulting <code>films.json</code> alongside this file.</p>
-    `;
-  }
+function loadFilms() {
+  allFilms = [
+    {
+      name: "Five Nights at Freddy's 2",
+      year: "2025",
+      quality: "1080p",
+      size: "1080p",
+      ext: "MP4",
+      filename: "1iF0CN_X61Z19yB08Rgc89KcsACJEUwJh",
+    },
+  ];
+  filtered = [...allFilms];
+  updateStats();
+  renderAll();
+  document.getElementById('loading').style.display = 'none';
 }
 
 function updateStats() {
