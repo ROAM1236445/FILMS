@@ -672,11 +672,9 @@ function renderGrid(list) {
 function play(filename, name) {
   activeId = filename;
   const section = document.getElementById('player-section');
-  const iframe = document.getElementById('video');
   document.getElementById('np-title').textContent = name;
-  iframe.src = `https://drive.google.com/file/d/${filename}/preview?autoplay=1`;
-  section.classList.add('open');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.open(`https://drive.google.com/file/d/${filename}/view`, '_blank');
+  activeId = filename;
   renderSidebar(filtered);
   renderGrid(filtered);
 }
