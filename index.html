@@ -513,7 +513,7 @@ main {
 
     <!-- Player -->
     <div id="player-section">
-      <iframe id="video" allowfullscreen allow="autoplay" style="width:100%;height:65vh;border:none;background:#000;display:block;"></iframe>
+      <iframe id="video" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" style="width:100%;height:65vh;border:none;background:#000;display:block;"></iframe>
       <div class="player-bar">
         <div class="now-playing">
           <div class="np-dot"></div>
@@ -671,10 +671,10 @@ function renderGrid(list) {
 // ── Video URLs now point directly to /films/filename (static files on Wisby) ──
 function play(filename, name) {
   activeId = filename;
-  const iframe = document.getElementById('video');
   const section = document.getElementById('player-section');
+  const iframe = document.getElementById('video');
   document.getElementById('np-title').textContent = name;
-  iframe.src = `https://drive.google.com/file/d/${filename}/preview`;
+  iframe.src = `https://drive.google.com/file/d/${filename}/preview?autoplay=1`;
   section.classList.add('open');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   renderSidebar(filtered);
